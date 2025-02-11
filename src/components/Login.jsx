@@ -1,24 +1,24 @@
-import React  from "react";
+import React from "react";
 
-import { useNavigate } from "react-router";
+// import { useNavigate } from "react-router";
 import { login } from "../libs/axios/auth";
 export default function Login() {
-    const navigate = useNavigate()
+  // const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const body = {
+    const { status } = await login({
       email: formData.get("email"),
       password: formData.get("password"),
-    };
-    console.log(body, formData);
-     const { status } = await login(body)
+    });
+    console.log(status);
 
-     if (status === 200) {
-      navigate('/')
-      return;
-    }
+       if (status === 200) {
+        // navigate('/')
+        console.log("paso");
+        return;
+      }
   };
 
   return (
