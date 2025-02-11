@@ -10,7 +10,7 @@ export function New() {
         <h1 className='font-bold text-4xl text-center'>Nuevo Usuario</h1>
 
         <fieldset className='flex gap-2'>
-          <label htmlFor="name" className='mt-8'>
+          <label htmlFor="name" className='mt-5'>
             Nombre:
             <input
               type="text"
@@ -21,7 +21,7 @@ export function New() {
               required
             />
           </label>
-          <label htmlFor="lastname" className='mt-8'>
+          <label htmlFor="lastname" className='mt-5'>
             Apellido:
             <input
               type="text"
@@ -33,14 +33,46 @@ export function New() {
             />
           </label>
         </fieldset>
-        <div className=" mt-8">
+        <div className=" mt-1">
           <h3>Role:</h3>
           <select className="select w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none" placeholder="Seleciona">
             <option value={1}>Admin</option>
             <option value={2}>Estudiantes</option>
           </select>
         </div>
-        <label htmlFor="email" className='mt-8'>
+        <label htmlFor="text" className='mt-1'>
+          Controler:
+          <input
+            type="text"
+            name="Controller"
+            id={1}
+            placeholder='eje: diego'
+            className='w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none'
+            required
+          />
+        </label>
+        <div className=" mt-1">
+          <h3>Pais:</h3>
+          <select className="select w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none" placeholder="Seleciona">
+            <option value={1}>Ecuador</option>
+            <option value={2}>Mexico</option>
+          </select>
+        </div>
+        <div className=" mt-1">
+          <h3>Reclutador:</h3>
+          <select className="select w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none" placeholder="Seleciona">
+            <option value={1}>Diego</option>
+            <option value={2}>Jose</option>
+          </select>
+        </div>
+        <div className=" mt-1">
+          <h3>Escuela:</h3>
+          <select className="select w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none" placeholder="Seleciona">
+            <option value={1}>front-end</option>
+            <option value={2}>Call Center</option>
+          </select>
+        </div>
+        <label htmlFor="email" className='mt-1'>
           Correo:
           <input
             type="email"
@@ -52,7 +84,7 @@ export function New() {
           />
         </label>
 
-        <label htmlFor="password" className='mt-8'>
+        <label htmlFor="password" className='mt-1'>
           Contraseña:
           <input
             type="password"
