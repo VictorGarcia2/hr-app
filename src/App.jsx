@@ -1,10 +1,8 @@
 import React from 'react'
 import Login from './components/Login'
 
-export default function  App() {
+export default function App() {
   return (
-    <div className='bg-[#103C6C] h-full'>
-      <Login/>
-    </div>
+
   )
 }
