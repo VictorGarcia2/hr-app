@@ -1,15 +1,11 @@
 import React, { useState } from 'react';
 
 export function Drawer() {
-
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
     const toggleSidebar = () => {
         setIsSidebarOpen(!isSidebarOpen);
     };
-
     return (
-
         <nav className="bg-gray-800 p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <span className="text-white font-bold text-xl">FUNVAL</span>
