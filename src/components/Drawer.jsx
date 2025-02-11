@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 export function Drawer() {
-<<<<<<< HEAD
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
@@ -43,37 +42,6 @@ export function Drawer() {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
-=======
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
-    };
-    return (
-        <nav className="bg-gray-800 p-4">
-            <div className="container mx-auto flex justify-between items-center">
-                <span className="text-white font-bold text-xl">FUNVAL</span>
-                <button onClick={toggleSidebar} className="text-white">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M4 6h16M4 12h16M4 18h16"
-                        />
-                    </svg>
-                </button>
-            </div>
-
-            <div
-                className={`fixed top-0 right-0 h-full w-64 bg-gray-900 text-white transform transition-transform duration-300 z-50 ${isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
-                    }`}
->>>>>>> dd83b4099a54b6c8a25fc84bd0f69b21b12e8782
             >
               <path
                 strokeLinecap="round"
