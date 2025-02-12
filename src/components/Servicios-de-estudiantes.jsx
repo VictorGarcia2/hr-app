@@ -8,7 +8,6 @@ export default function ServiciosDeEstudiantes() {
     const uploadedFile = e.target.files[0];
     setFile(uploadedFile);
   };
-
   return (
     <div className="flex flex-col relative min-h-screen p-4">
       <div className="flex justify-center">

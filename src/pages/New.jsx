@@ -9,7 +9,6 @@ export function New() {
         className="shadow-md p-8 w-[440px] bg-white rounded-md flex flex-col"
       >
         <h1 className="font-bold text-4xl text-center">Nuevo Usuario</h1>
-
         <fieldset className="flex gap-2">
           <label htmlFor="name" className="mt-5">
             Nombre:

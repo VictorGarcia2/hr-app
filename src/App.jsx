@@ -1,10 +1,8 @@
-
 import { Route, Routes } from "react-router";
 import Login from "./components/Login";
 import AuthLayout from './components/layouts/AuthLayout'
 import Profile from "./components/Profile";
 import Accordion from "./components/Accordion";
-import { Drawer } from "./components/Drawer";
 import { Estudiantes } from "./components/Estudiantes";
 export default function App() {
   return (
