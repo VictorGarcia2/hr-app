@@ -1,19 +1,22 @@
 
+
 import { useEffect, useState } from "react";
 import { getUsers } from "../libs/axios/getUsers"
-
+import { useNavigate } from "react-router";
 export function Estudiantes() {
   const [data, setData] = useState(null)
-
   console.log(data);
-
-
   useEffect(() => {
     getUsers()
     .then((response) => setData(response.data))
     .catch((error) => console.log(error))
 
   }, []);
+   const navigate = useNavigate()
+   const handleClick = (() =>{
+    navigate('/estudiantes/new')
+   })
+
 
   return (
     <div className="container p-4">
@@ -72,7 +75,7 @@ export function Estudiantes() {
           
         </tbody>
       </table>
-      <button className="flex justify-end rounded-full pt-2">
+      <button className="flex justify-end rounded-full pt-2" onClick={handleClick}>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR74Hj8swURNBBKwqS6Nj7dypcf-a3q4amYag&s"
           alt="añadir"
