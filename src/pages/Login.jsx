@@ -1,9 +1,9 @@
 import React from "react";
 
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { login } from "../libs/axios/auth";
 export default function Login() {
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,8 +15,7 @@ export default function Login() {
     console.log(status);
 
        if (status === 200) {
-        // navigate('/')
-        console.log("paso");
+        navigate('/')
         return;
       }
   };
