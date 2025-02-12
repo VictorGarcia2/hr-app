@@ -1,6 +1,7 @@
-import axios from "axios";
 
-export  const instance = axios.create({
+import axios from 'axios';
+
+export const instance = axios.create({
         baseURL: 'https://www.hs-service.api.crealape.com/api/v1',
         withCredentials: true
     });

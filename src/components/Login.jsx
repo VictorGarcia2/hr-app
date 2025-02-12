@@ -8,20 +8,17 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    const body = {
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+    console.log(body, formData);
+     const { status } = await login(body)
 
-    console.log(formData);
-    const { status } = await login(
-      {
-        email: formData.get("email"),
-        password: formData.get("password"),
-      }
-    )
-    console.log(status, "login succesful")
-    // if (status === 200) {
-    //   // navigate('/')
-    //   console.log("login succesful")
-    //   return;
-    // }
+     if (status === 200) {
+      navigate('/')
+      return;
+    }
   };
 
   return (
