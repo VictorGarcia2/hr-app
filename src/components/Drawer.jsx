@@ -59,12 +59,12 @@ export function Drawer() {
               </Link>
             </li>
             <li>
-              <Link to="profile" className="block">
+              <Link to="/profile" className="block">
                 Perfil
               </Link>
             </li>
             <li>
-              <Link to="estu" className="block">
+              <Link to="/estudiantes" className="block">
                 Estudiantes
               </Link>
             </li>
