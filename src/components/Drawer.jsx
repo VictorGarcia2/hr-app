@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router";
 export function Drawer() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
@@ -53,19 +54,19 @@ export function Drawer() {
           </button>
           <ul className="space-y-4 mt-8">
             <li>
-              <a href="#" className="block">
+              <Link to="servicios" className="block">
                 Servicios
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block">
+              <Link to="profile" className="block">
                 Perfil
-              </a>
+              </Link>
             </li>
             <li>
-              <a href="#" className="block">
+              <Link to="estu" className="block">
                 Estudiantes
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
