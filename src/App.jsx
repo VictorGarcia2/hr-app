@@ -1,3 +1,4 @@
+import { Drawer } from "./components/Drawer";
 import { Route, Routes } from "react-router";
 import Login from "./components/Login";
 import AuthLayout from './components/layouts/AuthLayout'
