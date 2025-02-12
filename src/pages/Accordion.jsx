@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { PencilButton } from './PencilButton';
-import Filtro from './Filtro';
+import { PencilButton } from '../components/PencilButton';
+import Filtro from '../components/Filtro';
 
 export default function Accordion() {
     const [openSection, setOpenSection] = useState(null);
