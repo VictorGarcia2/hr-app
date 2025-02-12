@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router";
+
 export function Estudiantes() {
+
+   const navigate = useNavigate()
+   const handleClick = (() =>{
+    navigate('/estudiantes/new')
+   })
+
   return (
     <div className="container p-4">
       <table className="table-auto w-full border border-gray-300 border-collapse">
@@ -49,7 +57,7 @@ export function Estudiantes() {
           </tr>
         </tbody>
       </table>
-      <button className="flex justify-end rounded-full pt-2">
+      <button className="flex justify-end rounded-full pt-2" onClick={handleClick}>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR74Hj8swURNBBKwqS6Nj7dypcf-a3q4amYag&s"
           alt="añadir"
