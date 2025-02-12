@@ -43,19 +43,19 @@ export default function Accordion() {
                     <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
 
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">Document1.PDF</a>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">5 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">5 Horas de Servicio</p>
 
                     </div>
                     <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">Document2.PDF</a>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">3 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">3 Horas de Servicio</p>
                     </div>
                     <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">Document3.PDF</a>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">6 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">6 Horas de Servicio</p>
                     </div>
                     <div className='border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900'>
-                        <p class="p-5 mb-2 text-gray-500 dark:text-gray-400">14 Horas Totales de Servicio</p>
+                        <p className="p-5 mb-2 text-gray-500 dark:text-gray-400">14 Horas Totales de Servicio</p>
                         <PencilButton />
                     </div>
 
@@ -91,22 +91,22 @@ export default function Accordion() {
 
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">DocumentA.PDF</a>
 
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">5 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">5 Horas de Servicio</p>
 
 
                     </div>
                     <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">DocumentB.PDF</a>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">3 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">3 Horas de Servicio</p>
 
                     </div>
                     <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">DocumentC.PDF</a>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">6 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">6 Horas de Servicio</p>
 
                     </div>
                     <div className='border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900'>
-                        <p class="p-5 mb-2 text-gray-500 dark:text-gray-400">14 Horas Totales de Servicio</p>
+                        <p className="p-5 mb-2 text-gray-500 dark:text-gray-400">14 Horas Totales de Servicio</p>
                         <PencilButton />
                     </div>
                 </div>
@@ -140,19 +140,19 @@ export default function Accordion() {
                     <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
 
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">DocumentQ1.PDF</a>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">5 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">5 Horas de Servicio</p>
 
                     </div>
                     <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">DocumentW1.PDF</a>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">3 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">3 Horas de Servicio</p>
                     </div>
                     <div className="p-5 border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900">
                         <a href="/docs/getting-started/introduction/" className="text-blue-600 dark:text-blue-500 hover:underline">DocumentE1.PDF</a>
-                        <p class="mb-2 text-gray-500 dark:text-gray-400">6 Horas de Servicio</p>
+                        <p className="mb-2 text-gray-500 dark:text-gray-400">6 Horas de Servicio</p>
                     </div>
                     <div className='border border-b-0 border-gray-200 dark:border-gray-700 dark:bg-gray-900'>
-                        <p class="p-5 mb-2 text-gray-500 dark:text-gray-400">14 Horas Totales de Servicio</p>
+                        <p className="p-5 mb-2 text-gray-500 dark:text-gray-400">14 Horas Totales de Servicio</p>
                         <PencilButton />
                     </div>
                 </div>

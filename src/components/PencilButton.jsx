@@ -13,10 +13,10 @@ export function PencilButton() {
     return (
         <div>
 
-            <div className='text-end mr-10 mb-10'>
+            <div className='text-end mr-10 mb-10 pb-3 w-[90%]  '>
                 <button
                     onClick={openModal}
-                    className="bg-none border-none cursor-pointer"
+                    className="bg-white rounded-full p-1 border-none cursor-pointer"
                 >
                     <Pencil />
                 </button>
