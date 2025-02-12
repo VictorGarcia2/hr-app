@@ -1,8 +1,6 @@
-import axios from 'axios'
+import axios from 'axios';
 
-export default function instance() {
-  
-    const instance = axios.create({
+export const instance = axios.create({
         baseURL: 'https://www.hs-service.api.crealape.com/api/v1',
         withCredentials: true
     });
@@ -18,4 +16,4 @@ export default function instance() {
     })
     
   
-}
+
