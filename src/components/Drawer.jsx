@@ -28,9 +28,8 @@ export function Drawer() {
       </div>
 
       <div
-        className={`fixed top-0 right-0 h-full w-64 bg-gray-900 text-white transform transition-transform duration-300 z-50 ${
-          isSidebarOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 h-full w-64 bg-gray-900 text-white transform transition-transform duration-300 z-50 ${isSidebarOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="p-4 relative">
           <button
@@ -66,6 +65,11 @@ export function Drawer() {
             <li>
               <Link to="/estudiantes" className="block">
                 Estudiantes
+              </Link>
+            </li>
+            <li>
+              <Link to="/serviciosDeEstudiantes" className="block">
+                Servicio de estudiantes
               </Link>
             </li>
           </ul>
