@@ -1,10 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { logOut } from "../libs/axios/auth";
 export function Drawer() {
+  const navigate = useNavigate()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
+  const onClose = ()=>{
+    logOut()
+    .then(data => {
+      if (data.status === 200) {
+        navigate('login')    
+      }
+    })
+    .catch(error => console.error(error))
+    
+  }
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -83,9 +95,9 @@ export function Drawer() {
             />
             <div>
               <span className="block">Nombre de usuario</span>
-              <a href="#" className="block text-gray-400 hover:text-white">
+              <button onClick={onClose} className="block text-gray-400 hover:text-white">
                 Cerrar sesión
-              </a>
+              </button>
             </div>
           </div>
         </div>

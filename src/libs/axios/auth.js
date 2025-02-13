@@ -8,3 +8,12 @@ export async function login(body) {
         console.log(error);
     }
 }
+export async function logOut() {
+    try {
+        const data = await instance.post('/auth/logout')
+        return data
+    } catch (error) {
+        console.log(error);
+    }
+}
+
