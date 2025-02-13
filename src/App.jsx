@@ -1,7 +1,6 @@
 import { Drawer } from "./components/Drawer";
 import { Route, Routes } from "react-router";
 import AuthLayout from './components/layouts/AuthLayout'
-import AuthLayout from './components/layouts/AuthLayout'
 import { Profiler } from "react";
 import  Profile from "./pages/Profile"
 import Accordion from "./pages/Accordion"
