@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import { postService } from "../libs/axios/postService";
 import { instance } from "../libs/axios/instance";
+import { getProfile } from "../libs/axios/auth";
+import { getEvidence } from "../libs/axios/services";
 
 
 export default function ServiciosDeEstudiantes() {
@@ -9,6 +11,26 @@ export default function ServiciosDeEstudiantes() {
   const [nombreServicio, setNombreServicio] = useState("");
   const [horasServicio, setHorasServicio] = useState("");
   const [servicios, setServicios] = useState([]);
+  
+   const [profile, setProfile] = useState(null)
+  const [student, setStudent] = useState(null)
+  console.log(profile)
+
+  useEffect(() => {
+    setTimeout(() => {
+      getProfile()
+        .then((response) => {
+          console.log(response);
+          if (response.data.role.name === "Admin") {
+            setProfile(response.data)
+          } else if(response.data.role.name === "Student") {
+            setStudent(response.data)
+          }
+        })
+        .catch(error => console.error(error))
+    }, 2000)
+  }, [])
+
 
 
   const handleSubmit = (e) => {
@@ -27,7 +49,6 @@ export default function ServiciosDeEstudiantes() {
     try {
       const { status, data } = await instance.get('/services')
       return { data, status }
-      //status code 201
     } catch (error) {
       throw error
     }
@@ -39,11 +60,12 @@ export default function ServiciosDeEstudiantes() {
       .then((response) => setData(response.data))
       .catch((error) => console.log(error))
   }, []);
-  function showEvidence(action) {
-    getEvidence(action)
+  
+  function showEvidence(id) {
+    getEvidence(id)
       .then((response) => {
         const fileURL = URL.createObjectURL(new Blob([response.data], { type: 'application/pdf' }));
-        window.open(fileURL, 'blank');
+        window.open(fileURL, '_blank');
       })
       .catch(error => console.log(error))
   }
@@ -96,14 +118,16 @@ export default function ServiciosDeEstudiantes() {
             </tr>
           </thead>
           <tbody>
-            {servicios.map((servicio, index) =>
-              <tr key={index} >
+            {data&&
+            data.map((servicio) =>
+            
+              <tr  >
                 <td className="border border-gray-400 p-2 text-center">
-                  {servicio.nombre}
+                  {servicio.category.description}
                 </td>
-                <td className="border border-gray-400 p-2 text-center"> {servicio.horas} </td>
-                <td className="border border-gray-400 p-2 text-center">
-                  {servicio.evidence}
+                <td className="border border-gray-400 p-2 text-center"> {servicio.amount_reported} </td>
+                <td onClick={()=>showEvidence(servicio.id)} className="border border-gray-400 p-2 text-center">
+                  evidencia
                 </td>
               </tr>
             )}
