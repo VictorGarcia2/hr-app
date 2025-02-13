@@ -1,10 +1,8 @@
 import React from "react";
-
 import { useNavigate } from "react-router";
 import { login } from "../libs/axios/auth";
 export default function Login() {
   const navigate = useNavigate()
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -13,9 +11,9 @@ export default function Login() {
       password: formData.get("password"),
     });
     console.log(status);
-
        if (status === 200) {
-        navigate('/')
+         navigate('/')
+        console.log("paso");
         return;
       }
   };
