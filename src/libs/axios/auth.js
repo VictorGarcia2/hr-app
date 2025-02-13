@@ -8,12 +8,12 @@ export async function login(body) {
         console.log(error);
     }
 }
-export async function logOut() {
+export async function getProfile() {
     try {
-        const data = await instance.post('/auth/logout')
-        return data
+        const {status, data} = await instance.get('/auth/profile')
+        return {data, status}
     } catch (error) {
-        console.log(error);
+      throw error
     }
+    
 }
-

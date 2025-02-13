@@ -32,8 +32,25 @@ export function New() {
               required
             />
           </label>
+        
         </fieldset>
         <div className=" mt-1">
+          <div>
+          <label htmlFor="lastname" className="mt-5">
+            Telefono:
+            <input
+              type="text"
+              name="phone"
+              id="phone"
+              className="w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none"
+              placeholder="eje: 1234567890"
+              onInput={(e) => {
+                e.target.value = e.target.value.replace(/[^0-9]/g, ''); // esta validacion ayuda a que se escriban solo numeros, no acepta letras ni simbolos especiales//
+              }}
+              required
+            />
+          </label>
+          </div>
           <h3>Role:</h3>
           <select
             className="select w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none"
