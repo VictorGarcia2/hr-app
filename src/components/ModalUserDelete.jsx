@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { DeleteOutlined } from './DeleteOutlined';
+import { ModalDeleteSuccessful } from './ModalDeleteSuccessful';
 
 export function ModalUserDelete() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    const openModal = () => setIsModalOpen(true);
-    const closeModal = () => setIsModalOpen(false);
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
 
     return (
         <>
@@ -23,7 +24,7 @@ export function ModalUserDelete() {
             <div
                 id="popup-modal"
                 tabIndex="-1"
-                className={`${isModalOpen ? 'block' : 'hidden'
+                className={`${isOpen ? 'block' : 'hidden'
                     } overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-slate-950 opacity-90 `}
             >
                 <div className="relative p-4 w-full max-w-md max-h-full ">
@@ -74,13 +75,7 @@ export function ModalUserDelete() {
                                 Seguro que quieres Borrar al usuario?
                             </h3>
                            </div>
-                            <button
-                                onClick={closeModal}
-                                type="button"
-                                className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center"
-                            >
-                                 Si, estoy seguro
-                            </button>
+                           <ModalDeleteSuccessful setIsOpen={setIsOpen}/>
                             <button
                                 onClick={closeModal}
                                 type="button"
@@ -88,6 +83,7 @@ export function ModalUserDelete() {
                             >
                                 No, cancelar
                             </button>
+                            
                         </div>
                     </div>
                 </div>

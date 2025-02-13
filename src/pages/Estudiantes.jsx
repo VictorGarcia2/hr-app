@@ -1,11 +1,11 @@
-
-
 import { useEffect, useState } from "react";
 import { getUsers } from "../libs/axios/getUsers"
 import { useNavigate } from "react-router";
+import { ModalUserDelete } from "../components/ModalUserDelete";
+
 export function Estudiantes() {
   const [data, setData] = useState(null)
-  console.log(data);
+  
   useEffect(() => {
     getUsers()
     .then((response) => setData(response.data))
@@ -16,7 +16,7 @@ export function Estudiantes() {
    const handleClick = (() =>{
     navigate('/estudiantes/new')
    })
-
+  
 
   return (
     <div className="container p-4">
@@ -38,7 +38,7 @@ export function Estudiantes() {
         <tbody>
           {data&&
             data.map(lista =>
-            <tr className="">
+            <tr className="" key={lista.id}>
             <td className="flex items-center px-2">
               <img
                 src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
@@ -60,13 +60,7 @@ export function Estudiantes() {
               <span>Controller</span>
             </td>
             <td>
-              <button>
-                <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLKcIYHj95NCPVND3e_Vk6wacFdImWBEaSwQ&s"
-                  alt="delete-action"
-                  className="w-5"
-                />
-              </button>
+            <ModalUserDelete></ModalUserDelete>
             </td>
           </tr>
 
@@ -82,6 +76,7 @@ export function Estudiantes() {
           className="w-8"
         />
       </button>
+      
     </div>
   );
 }
