@@ -29,7 +29,9 @@ export default function ServiciosDeEstudiantes() {
     }, 2000)
   }, [])
 
-
+  const reloadTable = () => {
+    location.reload()
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -37,10 +39,12 @@ export default function ServiciosDeEstudiantes() {
     console.log(formData)
     postService(formData)
       .then(response => {
+        setModalOpen(false)
+        reloadTable()
         console.log(response)
         e.target.reset()
       })
-      navigate('/serviciosDeEstudiantes')
+      // navigate('/serviciosDeEstudiantes')
       .catch(error => console.log(error))
   }
 
@@ -97,7 +101,7 @@ export default function ServiciosDeEstudiantes() {
       <div className="flex justify-center">
         <span className="text-lg font-semibold">{servicios.reduce((total, servicio) => total + servicio.horas, 0)} Horas registradas</span>
       </div>
-      <div className="py-10">
+      <div className=" py-10">
         <table className="w-full border-collapse border border-gray-400">
           <thead>
             <tr className="bg-slate-500 text-white">
@@ -108,11 +112,11 @@ export default function ServiciosDeEstudiantes() {
               <th className="border border-gray-400 p-2 text-center">
                 Horas Registradas
               </th>
-              <th className="border border-gray-400 p-2 text-center">
-                Descripcion
+              <th className="border border-gray-400 p-2 text-center hidden md:block">
+                Descripción
               </th>
               <th className="border border-gray-400 p-2 text-center">
-                Action
+                Acción
               </th>
             </tr>
           </thead>
@@ -120,11 +124,14 @@ export default function ServiciosDeEstudiantes() {
             {data &&
               data.map((servicio) =>
 
-                <tr  key={servicio.id}>
+                <tr key={servicio.id}>
                   <td className="border border-gray-400 p-2 text-center">
-                    {servicio.category.description}
+                    {servicio.category.name}
                   </td>
                   <td className="border border-gray-400 p-2 text-center"> {servicio.amount_reported} </td>
+                  <td className="border border-gray-400 p-2 text-center hidden md:block">
+                    {servicio.description}
+                  </td>
                   <td onClick={() => showEvidence(servicio.id)} className="border border-gray-400 p-2 text-center">
                     evidencia
                   </td>
@@ -134,18 +141,20 @@ export default function ServiciosDeEstudiantes() {
 
           </tbody>
         </table>
-      </div>
 
+      </div>
       <button
         onClick={() => setModalOpen(true)}
-        className="absolute bottom-4 left-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg"
+        className="fixed w-60 bottom-4 left-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg"
       >
         Agregar Servicio
       </button>
+
+
       {/* apartir de aqui vamos a trabajar para
       agregar nuevo */}
       {modalOpen && (
-        <form 
+        <form
           onSubmit={handleSubmit}
           encType="multipart/form-data"
         >
@@ -220,7 +229,7 @@ export default function ServiciosDeEstudiantes() {
                   Cancelar
                 </button>
                 <button
-                  /*  onClick={() => setModalOpen(false)} */
+
                   className="bg-green-500 text-white px-4 py-2 rounded-lg">
                   Guardar
                 </button>
