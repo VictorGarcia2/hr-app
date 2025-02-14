@@ -1,13 +1,12 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import { getProfile } from "../libs/axios/auth";
+import { getProfile } from "../libs/axios/getProfile";
 export default function Profile() {
 
   const [edition, setEdition] = useState(true)
   const [profile, setProfile] = useState(null)
   const [student, setStudent] = useState(null)
-  console.log(profile)
-
+  
   useEffect(() => {
     setTimeout(() => {
       getProfile()
@@ -26,7 +25,7 @@ export default function Profile() {
     <>
       <div className="flex h-screen w-screen items-center justify-center">
         {profile &&
-          <div className="bg-[#103C6C] border flex flex-col w-90 md:w-130 h-163 md:h-180 p-1 gap-3 md:gap-5 justify-center items-center rounded-lg">
+          <div className="bg-[#103C6C] border flex flex-col w-90 md:w-130 h-auto p-1 gap-3 md:gap-5 justify-center items-center rounded-lg">
             <div className="flex flex-col justify-center w-full gap-3 md:gap-2">
               <div className="flex justify-end">
                 <span className="font-bold pe-3 text-white">edit</span>
@@ -76,17 +75,17 @@ export default function Profile() {
               />
             </div>
             <div className="flex gap-8 m-4 justify-center">
-              <button className="bg-red-500 w-30 h-10 rounded-lg text-white  active:bg-red-600 text-lg font-bold">
+              <button disabled={edition} className="bg-red-500 w-30 h-10 rounded-lg text-white  active:bg-red-600 text-lg font-bold disabled:bg-gray-400">
                 Cancelar
               </button>
-              <button className="bg-blue-500 w-30 h-10 rounded-lg text-white  active:bg-blue-600 text-lg font-bold">
+              <button disabled={edition} className="bg-blue-500 w-30 h-10 rounded-lg text-white  active:bg-blue-600 text-lg font-bold disabled:bg-gray-400">
                 Guardar
               </button>
             </div>
           </div>
         }
         {student &&
-          <div className="bg-[#103C6C] border flex flex-col w-90 md:w-130 h-163 md:h-180 p-1 gap-3 md:gap-5 justify-center items-center rounded-lg">
+          <div className="bg-[#103C6C] border flex flex-col w-90 md:w-130 h-auto mt-10 p-1 gap-3 md:gap-5 justify-center items-center rounded-lg">
             <div className="flex flex-col justify-center w-full gap-3 md:gap-2">
               <div className="flex justify-end">
                 <span className="font-bold pe-3 text-white">edit</span>
@@ -172,10 +171,10 @@ export default function Profile() {
               />
             </div>
             <div className="flex gap-8 m-4 justify-center">
-              <button className="bg-red-500 w-30 h-10 rounded-lg text-white  active:bg-red-600 text-lg font-bold">
+              <button disabled={edition} className="bg-red-500 w-30 h-10 rounded-lg text-white  active:bg-red-600 text-lg font-bold disabled:bg-gray-400">
                 Cancelar
               </button>
-              <button className="bg-blue-500 w-30 h-10 rounded-lg text-white  active:bg-blue-600 text-lg font-bold">
+              <button disabled={edition} className="bg-blue-500 w-30 h-10 rounded-lg text-white  active:bg-blue-600 text-lg font-bold disabled:bg-gray-400">
                 Guardar
               </button>
             </div>

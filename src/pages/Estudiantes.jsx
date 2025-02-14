@@ -1,22 +1,23 @@
 import { useEffect, useState } from "react";
-import { getUsers } from "../libs/axios/getUsers"
+import { getStudents } from "../libs/axios/getUsers"
 import { useNavigate } from "react-router";
 import { ModalUserDelete } from "../components/ModalUserDelete";
 
+
 export function Estudiantes() {
   const [data, setData] = useState(null)
-  
+  console.log(data);
   useEffect(() => {
-    getUsers()
-    .then((response) => setData(response.data))
-    .catch((error) => console.log(error))
+    getStudents()
+      .then((response) => setData(response.data))
+      .catch((error) => console.log(error))
 
   }, []);
-   const navigate = useNavigate()
-   const handleClick = (() =>{
+  const navigate = useNavigate()
+  const handleClick = (() => {
     navigate('/estudiantes/new')
-   })
-  
+  })
+
 
   return (
     <div className="container p-4">
@@ -36,37 +37,41 @@ export function Estudiantes() {
         </thead>
 
         <tbody>
-          {data&&
+          {data &&
             data.map(lista =>
-            <tr className="" key={lista.id}>
-            <td className="flex items-center px-2">
-              <img
-                src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-                alt=""
-                className="w-10 h-10 rounded-full"
-              />
-              <div>
-                <p>{lista.full_name} </p>
-                <p>{lista.email} </p>
-              </div>
-            </td>
-            <td className="self-center">
-              <span>Completado</span>
-            </td>
-            <td className="hidden md:table-cell">
-              <span>reclutador</span>
-            </td>
-            <td className="hidden md:table-cell">
-              <span>Controller</span>
-            </td>
-            <td>
-            <ModalUserDelete></ModalUserDelete>
-            </td>
-          </tr>
+              <tr className="" key={lista.id}>
+                <td className="flex items-center px-2">
+                  <img
+                    src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
+                    alt=""
+                    className="w-10 h-10 rounded-full"
+                  />
+                  <div>
+                    <p>{lista.full_name} </p>
+                    <p>{lista.email} </p>
+                  </div>
+                </td>
+                <td className="self-center">
+                  <span>Completado</span>
+                </td>
+                <td className="hidden md:table-cell">
+                  <span>{lista.student.recruiter.f_name} </span>
+                  <span>{lista.student.recruiter.f_lastname}</span>
+                </td>
+                <td className="hidden md:table-cell">
+                  <span>{lista.student.controller.f_name} </span>
+                  <span>{lista.student.controller.f_lastname}</span>
+                </td>
+                <td>
+                  <ModalUserDelete
+                    users={lista.full_name}
+                  />
+                </td>
+              </tr>
 
             )
           }
-          
+
         </tbody>
       </table>
       <button className="flex justify-end rounded-full pt-2" onClick={handleClick}>
@@ -76,7 +81,7 @@ export function Estudiantes() {
           className="w-8"
         />
       </button>
-      
+
     </div>
   );
 }

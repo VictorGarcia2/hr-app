@@ -6,11 +6,11 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    const { status } = await login({
+    const { status, data } = await login({
       email: formData.get("email"),
       password: formData.get("password"),
     });
-    console.log(status);
+    console.log(status, data, formData)
        if (status === 200) {
          navigate('/')
         console.log("paso");

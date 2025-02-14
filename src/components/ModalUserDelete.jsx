@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { DeleteOutlined } from './DeleteOutlined';
 import { ModalDeleteSuccessful } from './ModalDeleteSuccessful';
 
-export function ModalUserDelete() {
+export function ModalUserDelete({users}) {
     const [isOpen, setIsOpen] = useState(false);
 
     const openModal = () => setIsOpen(true);
@@ -25,10 +25,10 @@ export function ModalUserDelete() {
                 id="popup-modal"
                 tabIndex="-1"
                 className={`${isOpen ? 'block' : 'hidden'
-                    } overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-slate-950 opacity-90 `}
+                    } overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full bg-slate-950 opacity-90 `}
             >
-                <div className="relative p-4 w-full max-w-md max-h-full ">
-                    <div className="relative bg-white rounded-lg shadow-sm dark:bg-gray-700 ">
+                <div className="relative p-4 w-full  max-w-md max-h-full ">
+                    <div className="relative bg-white  rounded-lg shadow-sm  ">
                         
                         <button
                             type="button"
@@ -71,8 +71,8 @@ export function ModalUserDelete() {
                                     d="M10 11V6m0 8h.01M19 10a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
                                 />
                             </svg>
-                            <h3 className="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">
-                                Seguro que quieres Borrar al usuario?
+                            <h3 className="mb-5 text-lg font-normal ">
+                                Seguro que quieres Borrar al usuario {users}?
                             </h3>
                            </div>
                            <ModalDeleteSuccessful setIsOpen={setIsOpen}/>
