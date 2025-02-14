@@ -44,7 +44,7 @@ export default function ServiciosDeEstudiantes() {
       .catch(error => console.log(error))
   }
 
-  async function getService() {
+ async function getService() {
     try {
       const { status, data } = await instance.get('/services')
       return { data, status }
