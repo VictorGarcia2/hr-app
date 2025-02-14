@@ -1,22 +1,60 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router";
-//import { logOut } from "../libs/axios/auth";
+import { logOut } from "../libs/axios/auth";
+import { getProfile } from "../libs/axios/getProfile";
+import { AuthContext } from "./layouts/AuthLayout";
+const routes = [
+  // {
+  //   name: "Dashboard",
+  //   route: "/",
+  //   role: ["Admin", "Student"]
+  // },
+  {
+    name: "Profile",
+    route: "/profile",
+    role: ["Admin", "Student"]
+  },
+  {
+    name: "Estudiantes",
+    route: "/estudiantes",
+    role: ["Admin"]
+  },
+  {
+    name: "Servicios",
+    route: "/servicios",
+    role: ["Admin"]
+  },
+  {
+    name: "Servicios De Estudiantes",
+    route: "/serviciosDeEstudiantes",
+    role: ["Student"]
+  },
+]
 export function Drawer() {
   const navigate = useNavigate()
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [user , setUser] = useState([])
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  // const onClose = ()=>{
-  //   logOut()
-  //   .then(data => {
-  //     if (data.status === 200) {
-  //       navigate('login')    
-  //     }
-  //   })
-  //   .catch(error => console.error(error))
+  const onLogOut = ()=>{
+    logOut()
+    .then(data => {
+      if (data.status === 200) {
+        navigate('/login')    
+      }
+    })
+    .catch(error => console.error(error))
     
-  // }
+  }
+  useEffect(()=>{
+  getProfile()
+  .then(response => setUser(response.data))
+  .catch(error => console.error(error))  }, []
+  )
+  const { profile } = useContext(AuthContext)
+  
   return (
     <nav className="bg-gray-800 p-4">
       <div className="container mx-auto flex justify-between items-center">
@@ -64,26 +102,15 @@ export function Drawer() {
             </svg>
           </button>
           <ul className="space-y-4 mt-8">
-            <li>
-              <Link to="servicios" className="block">
-                Servicios
+          {routes.filter((route) => route.role.includes(profile.role.name)).map(
+          r =>
+            <li key={r.name} className='hover:underline'>
+              <Link to={r.route}>
+                {r.name}
               </Link>
             </li>
-            <li>
-              <Link to="/profile" className="block">
-                Perfil
-              </Link>
-            </li>
-            <li>
-              <Link to="/estudiantes" className="block">
-                Estudiantes
-              </Link>
-            </li>
-            <li>
-              <Link to="/serviciosDeEstudiantes" className="block">
-                Servicio de estudiantes
-              </Link>
-            </li>
+
+        )}
           </ul>
         </div>
         <div className="absolute bottom-0 w-full p-4 border-t border-gray-700">
@@ -94,8 +121,8 @@ export function Drawer() {
               className="rounded-full h-8 w-8"
             />
             <div>
-              <span className="block">Nombre de usuario</span>
-              <button onClick={1} className="block text-gray-400 hover:text-white">
+              <Link to="/profile" className="block">{user.f_name}</Link>
+              <button onClick={onLogOut} className="block text-gray-400 hover:text-white">
                 Cerrar sesión
               </button>
             </div>

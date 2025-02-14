@@ -1,4 +1,4 @@
-import {instance} from "./instance";
+import { instance } from "./instance";
 
 export async function login(body) {
     try {
@@ -10,10 +10,18 @@ export async function login(body) {
 }
 export async function getProfile() {
     try {
-        const {status, data} = await instance.get('/auth/profile')
-        return {data, status}
+        const { status, data } = await instance.get('/auth/profile')
+        return { data, status }
     } catch (error) {
-      throw error
+        throw error
     }
-    
+
+}
+export async function logOut() {
+    try {
+        const data = await instance.post('/auth/logout')
+        return data
+    } catch (error) {
+        console.log(error);
+    }
 }

@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { postService } from "../libs/axios/postService";
 import { instance } from "../libs/axios/instance";
 import { getProfile } from "../libs/axios/auth";
-import { getEvidence } from "../libs/axios/services";
+import { getCategories, getEvidence } from "../libs/axios/services";
+import { useNavigate } from "react-router";
 
 
 export default function ServiciosDeEstudiantes() {
@@ -11,22 +12,19 @@ export default function ServiciosDeEstudiantes() {
   const [nombreServicio, setNombreServicio] = useState("");
   const [horasServicio, setHorasServicio] = useState("");
   const [servicios, setServicios] = useState([]);
-  
-   const [profile, setProfile] = useState(null)
-  const [student, setStudent] = useState(null)
+
+  const [profile, setProfile] = useState(null)
+  const [categories, setCategories] = useState(null)
   console.log(profile)
+  const navigate = useNavigate()
 
   useEffect(() => {
     setTimeout(() => {
       getProfile()
-        .then((response) => {
-          console.log(response);
-          if (response.data.role.name === "Admin") {
-            setProfile(response.data)
-          } else if(response.data.role.name === "Student") {
-            setStudent(response.data)
-          }
-        })
+        .then((response) => setProfile(response.data))
+        .catch(error => console.error(error))
+      getCategories()
+        .then((response) => setCategories(response.data))
         .catch(error => console.error(error))
     }, 2000)
   }, [])
@@ -42,6 +40,7 @@ export default function ServiciosDeEstudiantes() {
         console.log(response)
         e.target.reset()
       })
+      navigate('/serviciosDeEstudiantes')
       .catch(error => console.log(error))
   }
 
@@ -60,7 +59,7 @@ export default function ServiciosDeEstudiantes() {
       .then((response) => setData(response.data))
       .catch((error) => console.log(error))
   }, []);
-  
+
   function showEvidence(id) {
     getEvidence(id)
       .then((response) => {
@@ -90,7 +89,7 @@ export default function ServiciosDeEstudiantes() {
     setNombreServicio("");
     setHorasServicio("");
     setFile(null)
-    
+
   }
 
   return (
@@ -118,19 +117,19 @@ export default function ServiciosDeEstudiantes() {
             </tr>
           </thead>
           <tbody>
-            {data&&
-            data.map((servicio) =>
-            
-              <tr  >
-                <td className="border border-gray-400 p-2 text-center">
-                  {servicio.category.description}
-                </td>
-                <td className="border border-gray-400 p-2 text-center"> {servicio.amount_reported} </td>
-                <td onClick={()=>showEvidence(servicio.id)} className="border border-gray-400 p-2 text-center">
-                  evidencia
-                </td>
-              </tr>
-            )}
+            {data &&
+              data.map((servicio) =>
+
+                <tr  key={servicio.id}>
+                  <td className="border border-gray-400 p-2 text-center">
+                    {servicio.category.description}
+                  </td>
+                  <td className="border border-gray-400 p-2 text-center"> {servicio.amount_reported} </td>
+                  <td onClick={() => showEvidence(servicio.id)} className="border border-gray-400 p-2 text-center">
+                    evidencia
+                  </td>
+                </tr>
+              )}
 
 
           </tbody>
@@ -146,26 +145,30 @@ export default function ServiciosDeEstudiantes() {
       {/* apartir de aqui vamos a trabajar para
       agregar nuevo */}
       {modalOpen && (
-        <form onSubmit={handleSubmit}>
+        <form 
+          onSubmit={handleSubmit}
+          encType="multipart/form-data"
+        >
           <div className="fixed inset-0 flex items-center justify-center bg-[#103c6c] bg-opacity-90">
             <div className="bg-white p-6 rounded-lg shadow-lg w-96">
               <h2 className="text-xl font-semibold mb-4">
                 Agregar Nuevo Servicio
               </h2>
               <select
-              name="category_id"
-              id="category_id"
-                    className="select w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none"
-                    placeholder="Seleciona"
-                  >
-              {data &&
-                data.map(opciones => (
-                  
-                    <option value={opciones.category.id}>{opciones.category.description} </option>
-                  
-                ))
+                name="category_id"
+                id="category_id"
+                className="select w-full shadow-md rounded-md h-9 px-2 border border-gray-400 disabled:border-none"
+                placeholder="Seleciona"
+              >
+                <option value="null" disabled selected>Elige la categoria</option>
+                {categories &&
+                  categories.map(opciones => (
 
-              }
+                    <option key={opciones.id} value={opciones.id}>{opciones.name} </option>
+
+                  ))
+
+                }
               </select>
               {/* <input
                 type="text"
@@ -189,10 +192,10 @@ export default function ServiciosDeEstudiantes() {
                 }}
               />
               <textarea className="w-full p-2 border rounded mb-4 "
-              
-              id="description"
-              name="description"
-              
+
+                id="description"
+                name="description"
+
               />
               <div className="adjuntarArchivo mb-4 ">
                 <label
@@ -205,8 +208,8 @@ export default function ServiciosDeEstudiantes() {
                   type="file"
                   id="evidence"
                   name="evidence"
-
                   className="mt-1 block w-full text-sm text-gray-900 rounded-md border-black bg-slate-400"
+                  required
                 />
               </div>
               <div className="flex justify-end gap-2">
@@ -217,7 +220,7 @@ export default function ServiciosDeEstudiantes() {
                   Cancelar
                 </button>
                 <button
-                 /*  onClick={() => setModalOpen(false)} */
+                  /*  onClick={() => setModalOpen(false)} */
                   className="bg-green-500 text-white px-4 py-2 rounded-lg">
                   Guardar
                 </button>

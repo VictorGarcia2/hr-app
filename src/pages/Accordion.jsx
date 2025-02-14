@@ -13,7 +13,6 @@ export default function Accordion() {
         <>
             
             <div className=' grid  grid-cols-1 place-self-center md:min-w-96 mt-10' id="accordion-collapse" data-accordion="collapse">
-            <Filtro />
                 <h2 id="accordion-collapse-heading-1">
                     <button
                         type="button"

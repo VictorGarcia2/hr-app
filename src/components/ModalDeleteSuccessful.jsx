@@ -27,9 +27,9 @@ export const ModalDeleteSuccessful = ({setIsOpen}) => {
 
 
       <div
-        className={`${isModalOpen ? 'block' : 'hidden'} opacity-75 fixed inset-0 z-50 flex items-center justify-center bg-black`}
+        className={`${isModalOpen ? 'block' : 'hidden'}  fixed inset-0 z-50 flex items-center justify-center bg-black`}
       >
-        <div className="grid grid-cols-1 place-items-center bg-white rounded-lg shadow-lg p-6 w-full max-w-sm mx-10">
+        <div className="grid grid-cols-1 place-items-center bg-white opacity-100 rounded-lg shadow-lg p-6 w-full max-w-sm mx-10">
           <CheckCircle />
           <h2 className="text-xl font-semibold text-gray-800 mb-4">
             borrado exitosamente

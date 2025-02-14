@@ -1,11 +1,29 @@
-import React from 'react'
-import { Drawer } from '../Drawer'
+import React, { createContext, useEffect, useState } from 'react'
 import { Outlet } from 'react-router'
-export default function AuthLayout() {
+import { Drawer } from '../Drawer'
+import { getProfile } from '../../libs/axios/getProfile'
+export const AuthContext = createContext()
+
+export function AuthLayout() {
+    const [profile, setProfile] = useState(null)
+
+    useEffect(() => {
+            getProfile()
+                .then((response) => setProfile(response.data))
+                .catch(error => console.log(error))
+
+    }, [])
     return (
-        <div className=''>
+
+        <AuthContext.Provider value={{
+            profile
+        }}>
+            {profile &&
+            <div>
             <Drawer />
-            <Outlet/>
-        </div>
+            <Outlet />
+        </div>}
+        </AuthContext.Provider>
+
     )
 }

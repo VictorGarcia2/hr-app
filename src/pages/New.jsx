@@ -9,45 +9,45 @@ import { useEffect, useState } from "react";
 export function New() {
   const navigate = useNavigate()
 
-  const  [roles, setRoles]  = useState(null)
+  const [roles, setRoles] = useState(null)
   useEffect(() => {
     getRole()
-    .then(response => {
-      setRoles(response.data)
-    })
-    .catch(error => console.error(error))
+      .then(response => {
+        setRoles(response.data)
+      })
+      .catch(error => console.error(error))
   }, [])
-  const  [controller, setController]  = useState(null)
+  const [controller, setController] = useState(null)
   useEffect(() => {
     getController()
-    .then(response => {
-      setController(response.data)
-    })
-    .catch(error => console.error(error))
+      .then(response => {
+        setController(response.data)
+      })
+      .catch(error => console.error(error))
   }, [])
-  const  [country, setCountry]  = useState(null)
+  const [country, setCountry] = useState(null)
   useEffect(() => {
     getCountry()
-    .then(response => {
-      setCountry(response.data)
-    })
-    .catch(error => console.error(error))
+      .then(response => {
+        setCountry(response.data)
+      })
+      .catch(error => console.error(error))
   }, [])
   const [recrutier, setRecrutier] = useState(null)
   useEffect(() => {
     getRecrutier()
-    .then(response => {
-      setRecrutier(response.data)
-    })
-    .catch(error => console.error(error))
+      .then(response => {
+        setRecrutier(response.data)
+      })
+      .catch(error => console.error(error))
   }, [])
   const [schools, setSchools] = useState(null)
   useEffect(() => {
     getSchools()
-    .then(response => {
-      setSchools(response.data)
-    })
-    .catch(error => console.error(error))
+      .then(response => {
+        setSchools(response.data)
+      })
+      .catch(error => console.error(error))
   }, [])
 
   const handleSubmit = async (e) => {
@@ -58,23 +58,27 @@ export function New() {
       "s_name": "",
       "f_lastname": formData.get('lastname'),
       "s_lastname": "",
+      "phone": formData.get('phone'),
       "email": formData.get('email'),
-      "role_id":formData.get('role'),
+      "role_id": formData.get('role'),
       "controller_id": formData.get('controller'), // solo para estudiantes
       "country_id": formData.get('country'), // solo para estudiantes
       "recruiter_id": formData.get('recrutier'), // solo para estudiantes
-      "password":formData.get('password'),
+      "password": formData.get('password'),
       "schools": [  // cuando es un estudiantes solo puede tener una escuela asignada
-          formData.get('schools')
+        formData.get('schools')
       ]// El administrador no tiene escuelas asignadas
-      
-  }
+
+    }
     const { status } = await createUser(newUser)
     if (status === 201) {
       navigate('/estudiantes')
       return
     }
   };
+  const onClose = () => {
+    navigate('/estudiantes')
+  }
 
   return (
     <div className="w-full h-screen bg-gray-100 flex items-center justify-center">
@@ -110,7 +114,7 @@ export function New() {
         </fieldset>
         <div className=" mt-1">
           <div>
-            <label htmlFor="lastname" className="mt-5">
+            <label htmlFor="phone" className="mt-5">
               Telefono:
               <input
                 type="text"
@@ -133,7 +137,7 @@ export function New() {
             id="role"
           >
             <option value="null" disabled selected>Elige un role</option>
-            {roles && 
+            {roles &&
               roles.map(role => <option key={role.id} value={role.id}>{role.name}</option>)}
           </select>
         </div>
@@ -146,7 +150,7 @@ export function New() {
             id="controller"
           >
             <option value="null" disabled selected>Elige un controller</option>
-            {controller && 
+            {controller &&
               controller.map(controller => <option key={controller.id} value={controller.id}>{controller.full_name}</option>)}
           </select>
         </label>
@@ -159,7 +163,7 @@ export function New() {
             id="country"
           >
             <option value="null" disabled selected>Elige un Pais</option>
-            {country && 
+            {country &&
               country.map(country => <option key={country.id} value={country.id}>{country.name}</option>)}
           </select>
         </div>
@@ -172,7 +176,7 @@ export function New() {
             id="recrutier"
           >
             <option value="null" disabled selected>Elige un Reclutador</option>
-            {recrutier && 
+            {recrutier &&
               recrutier.map(recrutier => <option key={recrutier.id} value={recrutier.id}>{recrutier.full_name}</option>)}
           </select>
         </div>
@@ -185,9 +189,9 @@ export function New() {
             id="schools"
           >
             <option value="null" disabled selected>Elige un Escuela</option>
-            {schools && 
+            {schools &&
               schools.map(schools => <option key={schools.id} value={schools.id}>{schools.name}</option>)}
-            
+
           </select>
         </div>
         <label htmlFor="email" className="mt-1">
@@ -216,7 +220,8 @@ export function New() {
 
         <div className="flex justify-end w-full pt-8 px-2 gap-4">
           <button
-            type="submit"
+          onClick={onClose}
+            type="button"
             className="bg-red-600 px-8 py-2 rounded-md font-bold text-white hover:bg-red-700 active:bg-red-800"
           >
             Cancel

@@ -1,14 +1,14 @@
 import { instance } from "./instance"
 
-export async function getUsers() {
-    try {
-        const { status, data } = await instance.get('/users')
-        const estudiante = data.filter(user => user.role.name === 'Student');
-        return { status, data: estudiante}
-    } catch (error) {
-        console.log(error)
-    }
-}
+// export async function getUsers() {
+//     try {
+//         const { status, data } = await instance.get('/users')
+//         const estudiante = data.filter(user => user.role.name === 'Student');
+//         return { status, data: estudiante}
+//     } catch (error) {
+//         console.log(error)
+//     }
+// }
 
 export async function createUser(newUser) {
   try {
@@ -19,6 +19,15 @@ export async function createUser(newUser) {
     console.log(error)
   }
     
+}
+export async function getStudents() {
+  try {
+      const { status, data } = await instance.get('/students')
+
+      return { status, data}
+  } catch (error) {
+      console.log(error)
+  }
 }
 
 
